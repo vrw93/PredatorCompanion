@@ -1,0 +1,85 @@
+## Hasil Build & Kompilasi .NET
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+
+## Visual Studio Cache & Pengaturan User
+.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+## Editor Lain (VS Code & JetBrains Rider)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sln.iml
+
+## NuGet & Package
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+## Hasil Publish & Installer
+publish/
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+*.appx
+*.msix
+*.appxsym
+
+## Testing & Code Coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+TestResults/
+BenchmarkDotNet.Artifacts/
+
+## Database Lokal (SQL Server / SQLite)
+*.mdf
+*.ldf
+*.ndf
+*.db
+*.sqlite
+*.sqlite3
+
+## Secrets & Environment Variables
+.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+## File Sistem OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+#Custom File
+Todo.md
