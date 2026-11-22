@@ -2,20 +2,24 @@
 
 public readonly struct RgbZone : IEquatable<RgbZone>
 {
-    public int Id { get; }
-    public string Name { get; }
     public int Index { get; }
+    public string Name { get; }
 
-    public RgbZone(int id, string name, int index)
+    public IReadOnlyList<RgbLed> Leds { get; }
+
+    public RgbZone(string name, int index, RgbLed[] leds)
     {
-        this.Id = id;
-        this.Name = name;
-        this.Index = index;
+        Name = name;
+        Index = index;
+
+        ArgumentNullException.ThrowIfNull(leds);
+
+        Leds = Array.AsReadOnly((RgbLed[])leds.Clone());
     }
 
     public bool Equals(RgbZone other)
     {
-        return Id == other.Id && Name == other.Name && Index == other.Index;
+        return Index == other.Index;
     }
 
     public override bool Equals(object? obj)
@@ -25,7 +29,7 @@ public readonly struct RgbZone : IEquatable<RgbZone>
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Id, Name, Index);
+        return HashCode.Combine(Index);
     }
 
     public static bool operator ==(RgbZone left, RgbZone right)

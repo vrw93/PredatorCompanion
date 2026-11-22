@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public readonly struct RgbDevice : IEquatable<RgbDevice>
 {
-    public int Id { get; }
+    public int Index { get; }
     public string Name { get; }
     public RgbDeviceType Type { get; }
     public IReadOnlyList<RgbZone> Zones { get; }
 
-    public RgbDevice(int id, string name, RgbDeviceType type, RgbZone[] zones)
+    public RgbDevice(int index, string name, RgbDeviceType type, RgbZone[] zones)
     {
-        Id = id;
+        Index = index;
         Name = name;
         Type = type;
 
@@ -21,7 +21,7 @@ public readonly struct RgbDevice : IEquatable<RgbDevice>
 
     public bool Equals(RgbDevice other)
     {
-        return Id == other.Id;
+        return Index == other.Index;
     }
 
     public override bool Equals(object? obj)
@@ -31,7 +31,7 @@ public readonly struct RgbDevice : IEquatable<RgbDevice>
 
     public override int GetHashCode()
     {
-        return Id.GetHashCode();
+        return Index.GetHashCode();
     }
 
     public static bool operator ==(RgbDevice left, RgbDevice right)
