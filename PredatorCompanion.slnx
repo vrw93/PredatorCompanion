@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/PC.Modules.RGB/PC.Modules.RGB.csproj" />
+    <Project Path="src/PC.Platform.OpenRGB/PC.Platform.OpenRGB.csproj" />
     <Project Path="src/PredatorCompanion.CLI/PredatorCompanion.CLI.csproj" />
     <Project Path="src/PredatorCompanion.Core/PredatorCompanion.Core.csproj" />
   </Folder>
