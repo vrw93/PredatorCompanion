@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PredatorCompanion.Core\PredatorCompanion.Core.csproj" />
     <ProjectReference Include="..\PC.Modules.RGB\PC.Modules.RGB.csproj" />
+    <ProjectReference Include="..\PC.Platform.OpenRGB\PC.Platform.OpenRGB.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

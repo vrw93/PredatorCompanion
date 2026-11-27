@@ -1,8 +1,15 @@
-﻿var colorA = new RgbColor(255, 0, 0);
-var colorB = new RgbColor(255, 0, 0);
-var colorC = RgbColors.Blue;
+﻿using PC.Platform.OpenRGB.Protocols;
 
-Console.WriteLine(colorA == colorB);
-Console.WriteLine(colorA != colorC);
-Console.WriteLine(colorA.Equals(colorB));
-Console.WriteLine(colorA.ToHex());
+var packet = new OpenRgbPacket(
+    0,
+    40,
+    new byte[] { 3, 0, 0, 0 }
+);
+
+byte[] encoded = OpenRgbPacketCodec.Encode(packet);
+
+var decoded = OpenRgbPacketCodec.Decode(encoded);
+
+Console.WriteLine($"Device: {decoded.DeviceId}");
+Console.WriteLine($"Packet: {decoded.PacketId}");
+Console.WriteLine($"Payload: {decoded.PayloadLength}");
