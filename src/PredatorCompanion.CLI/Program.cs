@@ -1,15 +1,15 @@
-﻿using PC.Platform.OpenRGB.Protocols;
+﻿using PC.Platform.OpenRGB.Client;
+using System.Net.Sockets;
 
-var packet = new OpenRgbPacket(
-    0,
-    40,
-    new byte[] { 3, 0, 0, 0 }
-);
+await using var client = new OpenRgbClient();
 
-byte[] encoded = OpenRgbPacketCodec.Encode(packet);
+try
+{
+    await client.ConnectAsync();
 
-var decoded = OpenRgbPacketCodec.Decode(encoded);
-
-Console.WriteLine($"Device: {decoded.DeviceId}");
-Console.WriteLine($"Packet: {decoded.PacketId}");
-Console.WriteLine($"Payload: {decoded.PayloadLength}");
+    Console.WriteLine("Connected to OpenRGB!");
+}
+catch (SocketException e)
+{
+    Console.WriteLine($"Connection failed: {e.Message}");
+}
