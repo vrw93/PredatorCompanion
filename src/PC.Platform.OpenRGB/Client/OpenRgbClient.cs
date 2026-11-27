@@ -98,6 +98,43 @@ public sealed class OpenRgbClient : IAsyncDisposable
         return OpenRgbPacketCodec.Decode(packetData);
     }
 
+    public async Task<uint> NegotiateProtocolVersionAsync(
+        uint requestedVersion = 3,
+        CancellationToken cancellation = default
+    ) {
+        byte[] payload = new byte[4];
+
+        BinaryPrimitives.WriteUInt32LittleEndian(
+            payload,
+            requestedVersion
+        );
+
+        var request = new OpenRgbPacket(
+            deviceId: 0,
+            packetId: 40,
+            payload: payload
+        );
+
+        await SendPacketAsync(request, cancellation);
+
+        OpenRgbPacket response = await RecivePacketAsync(cancellation);
+
+        if (response.PacketId != 40)
+            throw new InvalidOperationException($"Unexpected Respond Packet Id: {response.PacketId}");
+
+        if (response.Payload.Count != 4)
+            throw new InvalidOperationException("Invalid Protocol Version");
+
+        byte[] responsePayload = [
+            response.Payload[0],
+            response.Payload[1],
+            response.Payload[2],
+            response.Payload[3]
+        ];
+
+        return BinaryPrimitives.ReadUInt32LittleEndian(responsePayload);
+    }
+
     private NetworkStream GetStream()
     {
         return _stream ?? throw new InvalidOperationException("Client Is Not Connected");

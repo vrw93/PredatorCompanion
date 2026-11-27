@@ -1,5 +1,4 @@
 ﻿using PC.Platform.OpenRGB.Client;
-using System.Net.Sockets;
 
 await using var client = new OpenRgbClient();
 
@@ -8,8 +7,13 @@ try
     await client.ConnectAsync();
 
     Console.WriteLine("Connected to OpenRGB!");
+
+    uint serverVersion =
+        await client.NegotiateProtocolVersionAsync(3);
+
+    Console.WriteLine($"Server Protocol: {serverVersion}");
 }
-catch (SocketException e)
+catch (Exception e)
 {
-    Console.WriteLine($"Connection failed: {e.Message}");
+    Console.WriteLine($"Error: {e.Message}");
 }
