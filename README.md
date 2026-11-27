@@ -14,3 +14,6 @@ A simple program that add missing feature from PredatorSense
 
 > [!WARNING]
 > This Is Subject To Change
+
+# 📜  LICENSE
+MIT LICENSE [See](LICENSE)
